@@ -14,7 +14,10 @@ new Vue({
 				return
 			}
 			this.processing = true
-			await Promise.all([...Array(20).keys()].map(() => this.$recaptcha('/upload')))
+			try {
+				await Promise.all([...Array(20).keys()].map(() => this.$recaptcha('/upload')))
+			} catch(e) {
+			}
 			this.processing = false
       
     }
